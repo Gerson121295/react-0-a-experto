@@ -1,0 +1,81 @@
+
+
+	--	Notas Curso: React: De cero a experto ( Hooks y MERN ) 	--
+
+- Sitio de Babel:   https://babeljs.io/
+
+
+- Seccion 3: Intro a JavaScript Moderno
+
+
+// Ejemplo de crear proyecto de React usando Vite
+PS C:\Users\Escritorio\react-0-a-experto> npm create vite@latest
+√ Project name: ... 02-intro-javascript   //definir nombre del proyecto
+√ Select a framework: » React		//Elegir React
+√ Select a variant: » JavaScript	//Elegir JavaScript
+
+Done. Now run:    
+  cd 02-intro-javascript  //Entrar a la carpeta del proyecto creado
+  npm install     	  //Instalar las dependencias
+  npm run dev 		  //Levantar el proyecto
+
+
+- Recursos
+-- Bases de JavaScript
+https://create-react-app.dev/
+
+-- Arreglos
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+-- Desestructuracion de objetos
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+-- Import, export y funciones comunes en arreglos
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+https://gist.github.com/Klerith/4aeb99d31aedbc29ff4d54bbb77d2d7f
+
+-- Promesas 
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+-- Fetch API
+https://developers.giphy.com/  
+// para crear API: 
+ https://developers.giphy.com/dashboard/  -- clic create an API key -→ clic API 
+-→ agregar nombre y descripcion -> creacte app -> copiar el API Key y pegar en nuestro proyecto de VSC: VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0
+-> ir a docs -> API -→ Endpoints -→ Buscar en el Menu: Random Endpoint
+copiar la url de GIF URL en el navegador: api.giphy.com/v1/gifs/random
+luego darle enter y
+luego pegar en el navegador el apikey:  ?apikey=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0
+
+Ruta de la API queda asi: https://api.giphy.com/v1/gifs/random?apikey=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0
+--La informacion que  interesa esta dentro de data e images original
+
+https://developer.mozilla.org/es/docs/Web/API/Fetch_API
+
+- Temas principales de JavaScript: https://developer.mozilla.org/es/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
