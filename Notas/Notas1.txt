@@ -55,6 +55,95 @@ https://developer.mozilla.org/es/docs/Web/API/Fetch_API
 - Temas principales de JavaScript: https://developer.mozilla.org/es/
 
 
+------ Seccion 4: Primeros pasos en React   ------
+
+Instalar prop-types para validar las props que se reciben del padre
+- instalar en la consola ruta de la app: npm i prop-types
+
+- Para validar las props con propTypes realizamos lo siguiente:
+
+- Importar la libreria: 
+import PropTypes from 'prop-types'
+
+- Revisar las props que se importan desde el padre
+export const FirstApp = ({title, subtitle}) =>{ //props importadas
+
+-Hasta el final del documento validar las props:
+
+//Definir los props por defecto en caso de que no viene del padre pero si viene tomará la del padre
+FirstApp.defaultProps = {
+    title: 'Soy Goku',
+}
+
+//Validar las props que se recibe del padre cumpla con el tipo de dato requerido
+FirstApp.propTypes ={
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+}
+
+
+Para ordenar líneas de código de forma ascendente en Visual Studio Code,
+
+1) Abre el archivo que contiene el código que deseas ordenar.
+
+2) Selecciona las líneas de código que deseas ordenar. Puedes seleccionarlas 
+	manualmente o usar el atajo de teclado Ctrl + A (Windows/Linux) o 
+	Cmd + A (Mac) para seleccionar todo el contenido del archivo.
+
+3) Una vez seleccionado el código, presiona F1 o Ctrl + Shift + P (Windows/Linux) o 
+	Cmd + Shift + P (Mac) para abrir la barra de comandos.
+
+4) Empieza a escribir "Sort Lines" en la barra de comandos. A medida que escribas, 
+	verás sugerencias de comandos relacionados.
+
+5) Deberías ver una opción llamada "Sort Lines Ascending" en la lista de sugerencias.
+	 Selecciónala.
+
+¡Listo! Las líneas seleccionadas se ordenarán en orden ascendente basado en su contenido.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
