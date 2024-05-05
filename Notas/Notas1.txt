@@ -102,6 +102,145 @@ Para ordenar líneas de código de forma ascendente en Visual Studio Code,
 ¡Listo! Las líneas seleccionadas se ordenarán en orden ascendente basado en su contenido.
 
 
+------- Seccion 5: Pruebas unitarias y de integracion  -------
+-- Si el proyecto fue creado por npx create react-app app ya tiene instalado libreria para pruebas
+-- Como el  proyecto fue creado con Vite + React no trae instalado librerias para prueba por
+lo que procedemos a instalarlos. Y realizar la siguiente configuracion.
+-- Ir a al sitio de Jest que es una framework para hacer pruebas para proyectos con JavaScript
+como react, node, angular, etc.
+
+-- Ir al sitio de -> https://jestjs.io/  -→ ir a Getting Started -→
+-> copiar: npm install --save-dev jest -> y pegarlo en la consola en la
+ruta de la aplicacion para instalar jest.
+-> Luego ir al package.json para ver que se instalo Jest. ->
+-> en Package.json  en la parte de: "scripts": agregar: "test": "jest" 
+-> Otra opcion es agregar en Package.json "test": "jest --watchAll" para poder ver los estados.
+-> para ejecutar la aplicacion escribir en consola: npm run test
+
+-> Dentro de la carpeta del proyecto a nivel de src Crear una carpeta llamada tests
+Esta sera para pruebas un espejo de todas las carpetas y los archivos de la carpeta src.
+Los archivos de test deben tener la extension: .test.js para archivos javascript y
+para los archivos o componentes de react debe tener la extension: .test.jsx
+ejemplo: 02-template-string.test.js
+-- No se puede hacer pruebas a un archivo que no este exportado: export
+
+-- Para poder tener ayuda en como se escribe las funciones de jest se debe instalar
+instalar en consola de la ruta de la app: npm add -D @types/jest
+
+-- Debido a que el proyecto fue creado con Vite para las pruebas se debe de 
+Instalar la configuracion de Babel para test en la ruta del proyecto. 
+--> ejecutar: npm install --save-dev babel-jest @babel/core @babel/preset-env
+-- Crear un archivo dentro del proyecto a nivel de src: babel.config.cjs
+-> dentro del archivo babel.config.cjs agregar la siguiente configuracion:
+	module.exports = {
+    presets: [
+        ['@babel/preset-env', { targets: {esmodules:true}}],
+        ['@babel/preset-react', { runtime: 'automatic'}],
+    ],
+  };
+
+
+Nota:
+Extensión de archivos
+Configuración para las pruebas de nuestros distintos archivos, en caso de ver 
+el error "You appear to be using a native ECMAScript module configuration file, 
+which is only supported when running Babel asynchronously."
+
+Cambiar extensión de los archivos jest.config.js y babel.config.js a .cjs
+Para ver mas detalles al respecto pueden ir a 
+https://nodejs.org/docs/latest/api/modules.html#enabling.
+
+-- Para ejecutar las pruebas
+-- ejecutar: npm run test  -> presionar w -> precionar p -> escribir el nombre de
+archivo "02-template-string" a ejecutar a probar. esto para solo ejecutar este archivo.
+
+//Nota: Para las pruebas lo que se tiene que hacer es ejecutar la funcion y
+evaluar el valor de retorno si es el esperado.
+
+--- PARA FETCH API - Nota para versiones menores a 18 en node realizar esta configuracion, 
+las versiones mayores a 18 ya lo traen
+--Crear un archivo: jest.config.cjs dentro del proyecto al nivel de la carpeta src
+--Crear un archivo: jest.setup.js dentro del proyecto al nivel de la carpeta src
+--- Dentro del archivo: jest.setup.js agregar: import 'whatwg-fetch';
+
+-- instalar en la ruta de la app: npm add -D whatwg-fetch
+-- instalar en la ruta de la app: npm add -D jest-environment-jsdom  o npm install -D jest@29.5
+-- instalar en la ruta de la app: > npm add -D @babel/preset-react
+
+-- Dentro del archivo jest.config.js agregar:
+	module.exports = {
+		testEnvironment:'jest-environment-jsdom',
+    		setupFiles:['./jest.setup.js'],
+  	};
+
+
+//Para pruebas de los componentes en React instalar:
+
+-Jest: es mas enfocada para hacer aserciones validaciones de funciones
+-ir -> https://jestjs.io/ -> docs -> Framework Guides -> Testing React Apps -> 
+-- Hasta abajo del documento nos describe que se debe usar Testing Library e indica como instalarlo.
+
+- Testing Library: es muy bueno para manejar el DOM virtual, automaticamente hace los clic en botones, hacer interacciones, etc
+- ir al sitio -> https://testing-library.com/ ->menu -> Frameworks -> React Testing Library: https://testing-library.com/docs/react-testing-library/intro
+-- Instalar en ruta de la app: npm install --save-dev @testing-library/react
+
+--La extension para los archivos de pruebas para components en React es: .test.jsx -> FirstApp.test.jsx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

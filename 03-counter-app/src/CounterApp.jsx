@@ -30,7 +30,7 @@ export const CounterApp = ({value}) => { //recibe props value del padre main.js
     return(
         <>
             <h1>CounterApp</h1>
-            <h2>{value}</h2>
+            {/* <h2>{value}</h2> */}
             <h2>{counter}</h2>
             <button 
                 className='button'
@@ -39,16 +39,17 @@ export const CounterApp = ({value}) => { //recibe props value del padre main.js
                 //onClick={aumentar} //forma 3 de aumentar:
                  onClick={handledAdd} //aumenta el valor
             >
-                +
+                +1
             </button>
             <button
                 className='button'
                 onClick={handleSubtract}
             >
-                -
+                -1
             </button>
 
             <button
+                aria-label='btn-reset' //es el id para las pruebas, otra forma es: id='btn-reset' 
                 className='button'
                 onClick={handleReset}
             >
@@ -61,3 +62,4 @@ export const CounterApp = ({value}) => { //recibe props value del padre main.js
 CounterApp.propTypes = {
     value: PropTypes.number.isRequired,
 }
+
