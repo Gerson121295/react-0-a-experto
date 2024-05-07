@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types'
-import { getGifs } from '../helpers/getGifs';
-import { useEffect, useState } from 'react';
 import GifItem from './GifItem';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 
 
-const GifGrid = ({category}) => {
+export const GifGrid = ({category}) => {
 
+  //Hook personalizado peromite obtener images e isLoading
+  const {images, isLoading } = useFetchGifs(category);
+  console.log({isLoading});
+
+
+  /* // Todo este bloque de codigo estará en el Custom Hook useFetchGifs
   //estado images, se actualiza con setImages y se inicializa con useState([]) con un arreglo vacio
   const [images, setImages] = useState([]); 
 
@@ -22,11 +27,23 @@ const GifGrid = ({category}) => {
       //getGifs(category); //LLama a la funcion que hace la consulta a la API para traer los gifs
       getImages(); //llama a la funcion getImages
     }, [])   // [] sig que el hook useEffect se va disparar la primera vez que se crea y se construye el componente (cuando buscamos un gif se crea el component)
+*/
 
 
   return (
     <>
       <h3>{category}</h3>
+
+     {/*  //Forma 1 isLoading
+      {
+        isLoading ? (<h2>Cargando...</h2>) //si isLoading es true muestra h2
+        : null  //si isLoading es false muestra false, no se renderiza en react
+      } */}
+      
+      
+      {  //Forma 2 isLoading usando && and logico
+        isLoading && (<h2>Cargando...</h2>)  //si isLoading es true ejecuta muestra h2, si es false ya no continua haciendo la evaluacion
+      }
 
       <div className='card-grid'>
         { //con el map recorremos las images por cada item y devolvemos su titulo
@@ -47,7 +64,7 @@ const GifGrid = ({category}) => {
   )
 }
 
-export default GifGrid
+//export default GifGrid;
 
 GifGrid.propTypes = {
     category : PropTypes.string.isRequired,

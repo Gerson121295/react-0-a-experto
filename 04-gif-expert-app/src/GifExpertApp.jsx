@@ -1,6 +1,5 @@
 import { useState } from "react"
-import AddCategory from "./components/AddCategory";
-import GifGrid from "./components/GifGrid";
+import{ AddCategory, GifGrid} from "./components"; //el import apunta al archivo de barril: index.js dentro de carpeta components
 
 const GifExpertApp = () => {
 
