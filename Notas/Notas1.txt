@@ -187,10 +187,76 @@ las versiones mayores a 18 ya lo traen
 --La extension para los archivos de pruebas para components en React es: .test.jsx -> FirstApp.test.jsx
 
 
+#### Seccion 6 - gif-expert-app
+Recurso:https://legacy.reactjs.org/docs/strict-mode.html
+
+PS C:\Users\Hp01\Escritorio\React-0-a-experto> npm create vite       
+√ Project name: ... 04-gif-expert-app
+√ Select a framework: » React
+√ Select a variant: » JavaScript
+Done. Now run:
+  cd 04-gif-expert-app
+  npm install      
+  npm run dev     
 
 
+Para cambiar el puerto tienes que ir al archivo de vite.config.js y colocarlo de la siguiente manera:
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+  }
+})
 
 
+//Crear un API en el sitio: https://developers.giphy.com/
+
+https://developers.giphy.com/  
+// para crear API: 
+ https://developers.giphy.com/dashboard/  -- clic create an API key -→ clic API 
+-→ agregar nombre y descripcion -> creacte app -> copiar el API Key y pegar en nuestro proyecto de VSC: VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0
+-> ir a docs -> API -→ Endpoints -→ Buscar en el Menu: Random Endpoint
+copiar la url de GIF URL en el navegador: api.giphy.com/v1/gifs/random
+luego darle enter y
+luego pegar en el navegador el apikey:  ?apikey=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0
+
+Ruta de la API queda asi: https://api.giphy.com/v1/gifs/random?apikey=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0
+--La informacion que  interesa esta dentro de data e images original
+
+https://developer.mozilla.org/es/docs/Web/API/Fetch_API
+
+
+Recursos:
+https://es.legacy.reactjs.org/docs/faq-structure.html
+https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76
+https://gist.github.com/Klerith/e4fca6ac127ccb9abd1e8ad77fcd52f1
+
+
+--- Traer Gifs 
+--Probar en Postman:
+GET: api.giphy.com/v1/gifs/search  -- Error 404 necesita el ?api_key
+GET: api.giphy.com/v1/gifs/search?api_key=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0  --Status 200 ok falta especificar que gif buscar al final de la url agregar "&q=NOMBRE_DEL_GIF" 
+GET: api.giphy.com/v1/gifs/search?api_key=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0&q=valorant&limit=20 //se agrego limite = 20
+
+    const url = ` http://api.giphy.com/v1/gifs/search?api_key=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0&q=${category}&limit=20`;
+      
+
+
+-- Demostracion de Produccion Rapido
+-- Abrir el package.json -> ver el comando en: scripts -> build
+-- Ejecutar en consola en la ruta de la app: npm run build
+-- Luego revisar la carpeta "dist" dentro del proyecto. Y ahi se encuentra la app de produccion optimizada:
+	dentro de la carpeta "dist" esta la carpeta assets y el archivo index.html y la imagen vite.svg 
+	estos archivos son los que se tomarian y se subirian a un hosting
+
+- http-server: a simple static HTTP server
+-- Para subir el proyecto un servidor local
+ir al link: https://www.npmjs.com/package/http-server
+
+-- Globally via npm - Instalar usando CMD:   npm install --global http-server
+luego estando en consola: entrar o hacer un cd a la carpeta dist del proyecto.
+ cd C:\Users\Hp01\OneDrive\Escritorio\React-0-a-experto\04-gif-expert-app\dist   
+luego:  http-server -o   //para que abra nuestro proyecto en produccion(simulacion) 
 
 
 
