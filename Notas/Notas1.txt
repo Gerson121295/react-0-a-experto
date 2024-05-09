@@ -102,7 +102,8 @@ Para ordenar líneas de código de forma ascendente en Visual Studio Code,
 ¡Listo! Las líneas seleccionadas se ordenarán en orden ascendente basado en su contenido.
 
 
-------- Seccion 5: Pruebas unitarias y de integracion  -------
+	------- Seccion 5: Pruebas unitarias y de integracion  -------
+
 -- Si el proyecto fue creado por npx create react-app app ya tiene instalado libreria para pruebas
 -- Como el  proyecto fue creado con Vite + React no trae instalado librerias para prueba por
 lo que procedemos a instalarlos. Y realizar la siguiente configuracion.
@@ -257,6 +258,50 @@ ir al link: https://www.npmjs.com/package/http-server
 luego estando en consola: entrar o hacer un cd a la carpeta dist del proyecto.
  cd C:\Users\Hp01\OneDrive\Escritorio\React-0-a-experto\04-gif-expert-app\dist   
 luego:  http-server -o   //para que abra nuestro proyecto en produccion(simulacion) 
+
+
+## Seccion 7 Deploy en Github
+-- Ejecutar: git checkout -- .   //Para rehacer el estado de nuestro codigo de la app hasta el ultimo commit
+
+-- Ejecutar en consola en la ruta de la app: npm run build
+-- Luego revisar la carpeta "dist" dentro del proyecto. 
+-> Renombrar la carpeta "dist" a "docs" 
+-> Entrar al archivo index.html de la carpeta docs para editar lineas de codigo. Agregarles un punto antes de la ruta.
+    <script type="module" crossorigin src="./assets/index-DuLSGigz.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DQ2fAogY.css">
+
+->Ir a github -> entrar al repositorio del proyecto ->Clic en settings 
+-> Clic en page -> Elegir la rama main -> Elegir folder: /docs ->clic en save. →Listo
+
+## Seccion 8 - Pruebas de 04-gif-expert-app
+//screen.debug(); //muestra en pantalla el component que se esta evaluando con sus datos que se ingresan
+
+Datos:
+<form 
+	onSubmit={onSubmit} 
+	aria-label="form" //es su key para cuando se hacen pruebas
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

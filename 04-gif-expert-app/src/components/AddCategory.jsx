@@ -7,6 +7,7 @@ export const AddCategory = ({onNewCategory}) => { //Forma2: recibe como props on
 
     //hook useState: inputValue es el valor y con setInputValue cambia el valor de inputValue y con useState('One Punch') inicializamos inputValue
     const [inputValue, setInputValue] = useState('One Punch');
+    //const [inputValue, setInputValue] = useState('');
 
     //Funcion para cambia el valor de inputValue por lo que se escriba en el input para buscar gifs
     const onInputChange = ({target}) => { //const onInputChange = (event) => {   otra forma es desestructurar target del event.
@@ -37,7 +38,10 @@ export const AddCategory = ({onNewCategory}) => { //Forma2: recibe como props on
   return (
     <>
         {/* <form onSubmit={(event) => onSubmit(event) }> */}
-        <form onSubmit={onSubmit}>
+        <form 
+            onSubmit={onSubmit} 
+            aria-label="form" //es su key de form para cuando se hacen pruebas
+        >
             <input 
             type="text" 
             placeholder="Buscar gifs"

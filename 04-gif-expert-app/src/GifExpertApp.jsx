@@ -44,9 +44,6 @@ const GifExpertApp = () => {
             ))
         }
 
-
-    {/* Gif Item */}
-
     </>
   )
 }

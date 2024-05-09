@@ -1,6 +1,6 @@
 
 
-//Funcion Fetch API- Para obtener las imagenes deseadas
+//Funcion Fetch API- Para obtener las imagenes deseadas. - Retornar un arreglo de gifs
 export const getGifs = async(category) => {
         
     const url = ` http://api.giphy.com/v1/gifs/search?api_key=VGTFsHDEQDQ3G5w9D5Rax75tZaljPOG0&q=${category}&limit=10`;
