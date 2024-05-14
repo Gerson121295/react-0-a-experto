@@ -1,4 +1,7 @@
 
+Otras opciones de despliegue:
+https://www.udemy.com/course/react-cero-experto/learn/lecture/19807106#questions/18287464
+
 
 	--	Notas Curso: React: De cero a experto ( Hooks y MERN ) 	--
 
@@ -283,11 +286,34 @@ Datos:
 >
 
 
+### Seccion 9 - Profundizando Hooks - Generales
+
+- App creada: npm create vite -> √ Project name: 05-hook-app ->React->JavaScript
+
+//Recursos
+//Libreria para form de React
+https://react-hook-form.com/get-started
+//Libreria sobre cache en react
+https://tanstack.com/query/latest
+//Curso gratuito para manejar tanstack query en react
+https://fernando-herrera.com/course/react-query/
+Referencia de la API de los Hooks
+https://es.legacy.reactjs.org/docs/hooks-reference.html#uselayouteffect
+
+//Hook ref:Permite mantener una referencia y cuando esa referencia cambie no disparemos 
+una rerenderizacion de nuestro componente //tambien mantiene una referencia a un elemento html
+    const ref = useRef();
+
+//memo es una funcion que le dice a React memoriza este component y solo cuando las properties cambien se va a ejecutar este componente
+//El hook UseCallback (parecido memo) sirve para memorizar funciones, y lo que regresa es una funcion que se puede ejecutar pera esa funcion memorizada solo se va a ejecutar cuando algo cambie
+  
 
 
+//Api para pokemon
+https://pokeapi.co/
+Peticion: https://pokeapi.co/api/v2/ Escribir: pokemon/1
 
-
-
+En Postman: GET: https://pokeapi.co/api/v2/pokemon/1
 
 
 
