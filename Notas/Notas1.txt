@@ -316,6 +316,14 @@ Peticion: https://pokeapi.co/api/v2/ Escribir: pokemon/1
 En Postman: GET: https://pokeapi.co/api/v2/pokemon/1
 
 
+----------   #Seccion 10: Profundizando Hooks - useReducer	----------
+Un reducer no es mas que una funcion pura
+Recursos: 
+https://es.legacy.reactjs.org/docs/hooks-reference.html#usereducer
+https://www.youtube.com/watch?v=hb8O0qRqiSk&t=2s
+
+
+
 
 
 

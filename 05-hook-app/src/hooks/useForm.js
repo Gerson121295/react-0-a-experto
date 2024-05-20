@@ -16,11 +16,11 @@ export const useForm = (initialForm = {}) => { //recibe el initialForm
         setFormState({
             ...formState, //desestructurar el formState para mantener los valores anteriores del formulario
             [name]:value, //establecemos el nuevo valor para name obtenido del value del input del form
-        })
+        });
     }
 
     //Funcion para Reset o limpiar el form
-    const onResetForm = () => {
+    const onResetForm = () => { //const onResetForm = () => {
         /*setFormState ({ //forma 2 cuando queremos modificar algun campo del form.
                 ...initialForm, //desestructuramos los datos que tenia antes el form
                 initialForm : {} //luego establecemos el objeto initalForm como vacio
