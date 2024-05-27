@@ -26,7 +26,7 @@ npm i --save-dev whatwg-fetch
   "test": "jest --watchAll"
 ```
 
-4. Crear la configuración de babel __babel.config.cjs__
+4. Crear archivo con la configuración de babel __babel.config.cjs__ //en nivel de src o junto package.json
 ```
 module.exports = {
     presets: [
@@ -36,7 +36,7 @@ module.exports = {
 };
 ```
 
-5. Opcional, pero eventualmente necesario, crear Jest config y setup:
+5. Opcional, pero eventualmente necesario, crear archivo Jest config y setup:
 
 __jest.config.cjs__
 ```

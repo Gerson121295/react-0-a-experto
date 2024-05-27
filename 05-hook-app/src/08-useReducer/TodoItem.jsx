@@ -6,11 +6,13 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => { //recibe com
         <span 
           className={`align-self-center ${(todo.done) ? 'text-decoration-line-through' : ''}`} //al clicar sobre el todo aparecerá tachada
           onClick={ () => onToggleTodo(todo.id) } //marcar el todo completado: el campo done será true
+          aria-label='span' //se agrego para acceder a span en las pruebas
         >
             {todo.description}
         </span>
         <button 
           className="btn btn-danger"
+          aria-label='borrar' //se agrego para acceder a span en las pruebas
           onClick={() => onDeleteTodo(todo.id)} //se llama a la funcion onDeleteTodo y se le envia el id del todo a eliminar
         >
             Borrar

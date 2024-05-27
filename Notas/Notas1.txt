@@ -418,7 +418,9 @@ El resto del código es tal cual como se ve en las lecciones
 Nuevamente, les recomiendo que chequen la documentación para que entiendan de mejor manera cada parte del código, el ejemplo que se usa en la documentación es muy bueno
 
 
-
+-- Pruebas
+render(): se utiliza para probar componentes de React. Te permite renderizar un componente en un entorno de prueba y verificar su salida, como el HTML generado o los eventos disparados.
+renderHook(): se utiliza para probar los hooks de React de forma aislada. Te permite renderizar un hook dentro de un componente de prueba y verificar su comportamiento, como el estado interno o las funciones que actualiza.
 
 
 

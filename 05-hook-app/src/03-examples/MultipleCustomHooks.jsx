@@ -46,6 +46,7 @@ export const MultipleCustomHooks = () => {
         
         <button
             className="btn btn-primary mt-2"
+            disabled={isLoading} // para las pruebas se definio
             onClick={() => increment()} //llama a la funcion increment del hook(useCounter) para aumentar en 1 el contador y asi pasar al siguiente pokemon
         >
             Siguiente
