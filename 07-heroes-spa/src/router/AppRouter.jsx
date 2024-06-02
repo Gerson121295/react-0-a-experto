@@ -1,6 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {HeroesRoutes, ChildHeroesRoutes} from "../heroes"; // dentro de la carpeta heroes se definio el archivo de barril index. js que exporta todos los archivos de component
 import { LoginPage } from "../auth";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 /*
 createBrowserRouter() es la función que crea el router de nuestra aplicación. Recibe como parámetro un array de objetos 
@@ -12,13 +14,13 @@ donde esos objetos corresponden a las rutas que tendrá la aplicación. Retorna 
  //Ruta 1 - Login
  {
     path: "login",
-    element: <LoginPage />,
+    element:<PublicRoute><LoginPage /></PublicRoute>,
   },
 
   //Ruta 1 - HeroesApp - //Forma 1:  llamar archivo children que contiene las rutas
   {
     path: "/", 
-    element: <HeroesRoutes/>,
+    element: <PrivateRoute><HeroesRoutes/></PrivateRoute>, //se envuelve al componete HeroesRoutes con PrivateRoute, para definirlo como ruta privada
    // errorElement: <ErrorPage/>, //para manejar error
     children: ChildHeroesRoutes, //importar archivos que contiene las rutas
   }

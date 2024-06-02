@@ -31,7 +31,8 @@ export const HeroPage = () => {
         <div className="col-4">
           <img
             className="img-thumbnail  animate__animated animate__fadeInLeft" //clase: class="animate__animated animate__bounce o fadeIn es del sitio: https://animate.style/ 
-            src={`/assets/heroes/${id}.jpg`} 
+            //src={`/assets/heroes/${id}.jpg`} //se cambio la ruta por problemas al hacer el build no generaba las imgs para el deploy
+            src={`/heroes/${id}.jpg`}
             alt={hero.superhero} 
           />
           </div>

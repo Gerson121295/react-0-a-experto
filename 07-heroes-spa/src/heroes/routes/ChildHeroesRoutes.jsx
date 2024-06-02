@@ -33,5 +33,23 @@ export const ChildHeroesRoutes = [
         path: "*", //Si se coloca un "/*" o * cuando se entra a una ruta que no existe entra a <MarvelPage/> 
         element: <MarvelPage/>,
       },
- 
 ]
+
+
+//Aqui tambien se podria definir el codigo de: export HeroesRoutes:
+/*
+
+export const HeroesRoutes = () => {
+  return (
+    <>
+        <Navbar />
+
+        <div className="container">
+        <Outlet 
+        //AppRoutes define las rutas de la app y Outlet se utiliza dentro de los componentes de esas rutas para renderizar sus rutas hijas.
+        />
+        </div>
+    </>
+  )
+}
+*/

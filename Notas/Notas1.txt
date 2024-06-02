@@ -454,7 +454,7 @@ npm install react-router-dom   //para las rutas
 npm install query-string  //para manejar enviar query params en la ruta al buscar un heroe y enviarle el nombre en la url
 
 
-
+// https://github.com/Tech-Code1/heroes-app-react
 
 
 

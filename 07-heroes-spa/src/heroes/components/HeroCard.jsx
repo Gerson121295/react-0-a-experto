@@ -24,7 +24,13 @@ export const HeroCard = (
     }
 ) => {
 
-    const heroImageUrl = `/assets/heroes/${id}.jpg`;
+    /* Antes carpeta heroes estaba en carpeta assets pero por problemas alhacer el build de la app para hacer el deploy, 
+    ya que los assets con las imágenes no se copian automáticamente a la carpeta dist con el build de producción por lo que se movie heroes a la carpeta public 
+    en la raíz del proyecto (al mismo nivel que package.json o index.html) 
+     y De esta forma ya se copian automáticamente las imágenes, y funciona nuestra app tanto en desarrollo como producción.
+    */
+    //const heroImageUrl = `/assets/heroes/${id}.jpg`; 
+    const heroImageUrl = `/heroes/${ id }.jpg`;
 
     //Forma 2 definir etiqueta p en una const
     const charactesByHero = (<p>{characters}</p>);

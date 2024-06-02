@@ -1,13 +1,21 @@
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context/AuthContext';
 
 
 export const Navbar = () => {
+
+//Se desestructura para obtener el user con el useContext(extrae la data del AuthContext a utilizar en este componente)
+  const {user, logout} = useContext(AuthContext)
+//console.log(user);
 
     //Custom Hook - Para la navegacion a una ruta
     const navigate = useNavigate();
 
     //funcion para hacer Logout
     const onLogout = () => {
+        logout(); //Llama a la funcion logout del AuthContext 
+        //navega al login
         navigate('/login', 
             {replace:true} //replace evita que user regrese al historial anterior(funciona en modo incognito)
         ); 
@@ -55,7 +63,7 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
                     <span className='nav-item nav-link text-info'>
-                        Gerson
+                      {user?.name}
                     </span>
                     <button 
                     className='nav-item nav-link btn'
