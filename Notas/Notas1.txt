@@ -452,15 +452,41 @@ Agrego estilos css en index.html -Copia el CDN: https://animate.style/
 Install:
 npm install react-router-dom   //para las rutas
 npm install query-string  //para manejar enviar query params en la ruta al buscar un heroe y enviarle el nombre en la url
+npm install query-string@7.1.3 //recomendable instalar esta version para evitar error cuando se hacen los tests
 
+
+
+#### Seccion 16 - pruebas a la app heroes
 
 // https://github.com/Tech-Code1/heroes-app-react
+//https://github.com/ArmandoRamirezCarrillo/HeroesApp
 
 
+Se debe de agregar transformIgnorePatterns a jest.config
+
+module.exports = {
+  transformIgnorePatterns: [
+    'node_modules/(?!(query-string|decode-uri-component|split-on-first|filter-obj)/)',
+  ],
+  testEnvironment: 'jest-environment-jsdom',
+//  setupFiles: ['./jest.setup.js'],
+};
 
 
+///Para las pruebas de rutas - pruebas en AppRoute.test.js
+Instalar:
+La versión usada para tests, en este caso v7, la instalaremos como dependencia y con un alias para poder tener las dos versiones en paralelo:
 
+   npm install -D query-string-v7@npm:query-string@7.1.3
 
+Ahora en el archivo jest.config.ts añadiremos la opción moduleNameMapper en nuestra configuración:
+
+export default {
+    testEnvironment: 'jsdom',
+    moduleNameMapper: {
+      "^query-string$": "<rootDir>/node_modules/query-string-v7"
+    }
+  };
 
 
 

@@ -45,7 +45,7 @@ export const SearchPage = () => {
         <div className="col-5">
           <h4>Searching</h4>
           <hr />
-          <form onSubmit={onSearchSubmit }>
+          <form onSubmit={onSearchSubmit} aria-label='form'>
             <input
               type="text"
               placeholder="Search a hero"
@@ -85,6 +85,7 @@ export const SearchPage = () => {
           {/* Si showError es true, el div se muestra (display: '', que mantiene el comportamiento por defecto). Si showError es false, el div se oculta (display: 'none'). 
             si ya se busco un heroe pero no se encontro muestra esta alerta: el '' indica que si se vera la alerta, el none oculta la alerta */}
          <div 
+          aria-label="alert-danger" //es la key para tener acceso a este div para las pruebas
           className="alert alert-danger animate__animated animate__fadeIn" 
           style={{display: showError ? '' : 'none' }} 
         > 
