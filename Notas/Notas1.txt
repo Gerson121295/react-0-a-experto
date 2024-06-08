@@ -488,6 +488,36 @@ export default {
     }
   };
 
+		## Seccion 17 - JournalApp-MaterialUI -Estructura y Diseño
+Install:
+- npm install react-router-dom   //para las rutas
+- Instalar Material UI 
+-> npm install @mui/material @emotion/react @emotion/styled
+
+La interfaz de usuario de Material utiliza la fuente Roboto de forma predeterminada.
+-> Agregar en index.html en el <head> la fuente de Roboto font usada por material UI
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+/>
+
+## Agregar los Icons de material UI
+-> npm install @mui/icons-material
+
+- Luego de hacer las instalaciones de Material UI 
+- Hacer configuraciones de material UI en vite: 
+→ Se agrego en el proyecto la carpeta theme
+ 
+- Ir a ver como se usa 
+-> https://mui.com/material-ui/getting-started/usage/
+-> https://mui.com/material-ui/getting-started/example-projects/
+-> https://github.com/mui/material-ui/tree/next/examples/material-ui-vite
+
+## Recursos: 
+Material UI: https://mui.com/  
+-> https://mui.com/material-ui/guides/minimizing-bundle-size/#development-environment).
+-> https://mui.com/material-ui/getting-started/installation/
+
 
 
 
