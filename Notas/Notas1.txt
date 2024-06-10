@@ -519,7 +519,142 @@ Material UI: https://mui.com/
 -> https://mui.com/material-ui/getting-started/installation/
 
 
+## Seccion 18 - Redux
+- Redux : Es un contenedor predecible del estado de nuestra aplicacion.
+-- Store: Fuente unica de la verdad - Ahi es donde esta la informacion que mis componentes consumiran
 
+- Recursos:
+-- Extension para el navegador:
+-> https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en
+-> https://redux-toolkit.js.org/
+-> Snippet y Gists de Slice: https://gist.github.com/Klerith/060281f76f3b7f0a458e4b83b1fc0062
+
+
+- Inicio de Proyecto - Redux-Tool
+-> ir ->https://redux-toolkit.js.org/  
+-> clic en Get Started -> https://redux-toolkit.js.org/introduction/getting-started
+-> Quick Start -> Instalar -> npm install @reduxjs/toolkit react-redux
+
+-> Instalar Axios para peticiones Http: npm install axios
+
+
+- Configurar Store y Reducer
+-- Crear un Snippet en VSC - Para que al Escribir reduxSlice aparezca la plantilla a editar el Slice
+-> en VSC -> Precionar: CTRL+SHIF+P -> escribir: >configure User Snippets 
+-> Elegir el lenguaje: javascript ->
+-> Definirlo:
+	 "Crear un slice de Redux": {
+	 	"prefix": "redux-slice",
+	 	"body": [
+	 		"AQUI VA EL CODE, cada linea va dentro de comillas",
+	 	],
+	 	"description": "Crear un slice de Redux"
+	 }
+}
+
+
+//Ejemplo Mas general - Agrega el nombre del archivo por default
+
+"RTK Slice": {
+  "prefix": "redux-slice",
+  "body": [
+    "import { createSlice } from '@reduxjs/toolkit'",
+    "",
+    "const initialState = {$0}",
+    "",
+    "export const ${1:${TM_FILENAME_BASE}} = createSlice({",
+    "  name: '${TM_FILENAME_BASE/(Slice)//}',",
+    "  initialState,",
+    "  reducers: {}",
+    "})",
+    "",
+    "// export const {} = ${1:${TM_FILENAME_BASE}}.actions",
+    "export const ${TM_FILENAME_BASE/(Slice)//}Reducer = ${1:${TM_FILENAME_BASE}}.reducer",
+    ""
+  ],
+  "description": "Creates a Redux Slice",
+}
+
+
+//Este es el mi Snippet
+
+{
+	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+"Crear un slice de Redux": {
+	"prefix": "redux-slice",
+	"body": [
+		"import { createSlice } from '@reduxjs/toolkit';",
+		"",
+		"const initialState = {",
+		"	counter: 10,",
+		"}",
+		"",
+		"	export const ${1:${TM_FILENAME_BASE}} = createSlice({",
+		"		name: '${TM_FILENAME_BASE/(Slice)//}', //nombre del slice",
+		"		initialState,",
+		"		reducers: {",
+		"",
+		"		//Definir las funciones",
+		"			increment: (state) => {",
+		"				state.counter += 1;",
+		"			},",
+		"			//incrementa en 2 en 2 o segun el valor enviado de parametro (action.payload)",
+		"			incrementBy : (state, action) => {",
+        "			state.counter += action.payload;",
+    	"			},"
+		"",
+		"		}",
+		"	});",
+		"",
+		"",
+		"// Action creators are generated for each case reducer function",
+		"// Exporta las funciones para que pueda ser utilizada por otros component",
+		"export const { increment, incrementBy } = ${1:${TM_FILENAME_BASE}}.actions;",
+	],
+	"description": "Crear un slice de Redux"
+}
+}
+
+
+//Cree un Snippet para Lenguaje javascript/React
+
+{
+		"Crear un arrow function component": {
+	 	"prefix": "cafcomp",
+	 	"body": [
+	 		"export const ${1:${TM_FILENAME_BASE}} = () => {",
+			"	return (",
+			"		<>  ",  
+			"		</>",
+			"	)",
+			"	}",
+	 	],
+	 	"description": "Crear un arrow function component"
+	 }
+}
+
+
+###PokemonAPI
+♠ Go -> https://pokeapi.co/
+https://pokeapi.co/api/v2/  - pokemon?limit=10&offset=0  
+- Thunk es una accion asincrona que dispara otra accion cuando se resuelve la peticion asincrona.
+
+--JSON - Recursos para peticiones Https simulaciones
+https://jsonplaceholder.typicode.com
+JSON de TODOS: https://jsonplaceholder.typicode.com/todos
 
 
 
