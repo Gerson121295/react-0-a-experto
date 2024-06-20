@@ -647,6 +647,18 @@ Material UI: https://mui.com/
 }
 
 
+
+snippet que hice para crear un archivo de barril
+ 
+"Crear un archivo de barril": {
+        "prefix": "barril",
+        "body": [
+                    "export * from '${1:archivo}'"          
+        ],
+        "description": "Crea un Fragmento de archivo de barril | personalizado por DR"
+
+
+
 ###PokemonAPI
 ♠ Go -> https://pokeapi.co/
 https://pokeapi.co/api/v2/  - pokemon?limit=10&offset=0  
@@ -656,6 +668,80 @@ https://pokeapi.co/api/v2/  - pokemon?limit=10&offset=0
 https://jsonplaceholder.typicode.com
 JSON de TODOS: https://jsonplaceholder.typicode.com/todos
 
+
+## S19- Introduccion a Redux y autenticacion en firebase - 08-journal-app
+
+Install Redux al Proyecto -> ir ->https://redux-toolkit.js.org/  
+-> clic en Get Started -> https://redux-toolkit.js.org/introduction/getting-started
+-> npm install @reduxjs/toolkit react-redux
+
+-> Para validar formularios: https://www.npmjs.com/package/validator
+
+--Configuracion Incial de Firebase:
+- Usar variables de entorno.
+Si se desea usar variables de entorno, con Vite se puede configurar de la siguiente manera:
+- En la raiz del proyecto, crear el archivo .env
+- Si no se desea subir a git, en el archivo   .gitignore agregar .env al final
+- Dentro del archivo .env crear las variables, por ejemplo :
+
+VITE_FIRESTORE_API=api
+VITE_FIRESTORE_AUTH_DOMAIN=domain
+VITE_FIRESTORE_PROJECT_ID=id
+VITE_FIRESTORE_STORAGE_BUCKET=storage
+VITE_FIRESTORE_MESSAGINGSENDERID=sender
+VITE_FIRESTORE_APP_ID=app
+
+- En el archivo config.js llamar a los valores de la siguiente manera:
+
+const firebaseConfig = {
+    apiKey: import.meta.env.VITE_FIRESTORE_API,
+
+###Firebase:
+-- Firebase es una plataforma Backend-as-a-Service (BaaS) proporcionada por Google que 
+ofrece diversos servicios, como autenticación, bases de datos y almacenamiento en la 
+nube, entre otros. Está diseñada para ayudar a los desarrolladores a construir y 
+gestionar el backend de sus aplicaciones sin tener que administrar servidores o 
+infraestructura. Firebase puede utilizarse como una solución de backend independiente 
+o en conjunto con otras tecnologías de backend como Node.js.
+-- Se recomienda para casos en los que se desea construir y gestionar el backend de la 
+aplicación de forma rápida y sencilla, sin tener que administrar servidores o 
+infraestructura. También es una buena opción si se necesita añadir autenticación y 
+gestión de usuarios a la aplicación, ya que proporciona una forma simple y segura de 
+gestionar cuentas de usuario.
+
+
+- Ir a Firebase:
+->clic en console: https://firebase.google.com/docs/web/modular-upgrade?hl=es-419 
+->Logearse con la cuenta de google -> Usar la capa gratuita.
+-> Clic Agregar Proyecto -> Agregar nombre: journal-app-react
+-> Deshabilitar Google Analytics -(el proyecto no lo necesita)
+-> Clic en crear Proyecto. ->Entrar al proyecto 
+-> clic en el icon: </> ->  Para agregar firebase a al App 
+-> Dar nombre a la App: Journal-App -> no activar Firebase Hosting
+
+->Instalar Firebase al proyecto -> npm install firebase
+->dentro de src/firebase/config.js Copiar la configuracion al proyecto que ofrece firebase
+
+-- Agrega tu primer método de acceso y comienza a utilizar Firebase Auth
+->Dentro de nuestra App -> Elegir productos a agregar a la App 
+->clic en Authentication -> clic en comenzar 
+->elegir:Correo Electronico/Contraseña y clic en Habilitar. (no habilitar acceso sin contraseña) -> Guardar
+->clic en Agregar nuevo Proveedor -> Google -> Habilitar ->Agregar nuestro email -> Guardar
+
+->Listo configuracion de autenticacion realizada con exito: 
+->Los usuarios authenticados se veran dentro de Authenticaction -> Usuario
+->Documentacion: https://firebase.google.com/docs/auth/web/google-signin?authuser=0&hl=es
+
+#### Se agrego animacion a las paginas de la aplicacion
+->Animaciones: -> https://animate.style/
+->Opcion 1: Instalar: npm install animate.css --save
+->Opcion 2: using a CDN: Pegar en index.html dentro del head ->
+	<head>
+  		<link
+    		rel="stylesheet"
+    		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  		/>
+	</head>
 
 
 
