@@ -12,6 +12,12 @@ export const useForm = (initialForm = {}, formValidations = {}) => { //recibe el
       createValidators();
     }, [formState]) //se ejecuta createValidator cada vez que cambie formState(cualquier campo del form, botones, etc.)
     
+
+    useEffect( () => {
+        setFormState(initialForm); //cada vez que cambie el initialForm, se establece el nuevo initialForm
+    }, [initialForm]) //useEffect se dispara cada vez que cambia el initialForm
+
+
     //isFormValid se va a volver a recalcular si cambia el formValidation
     const isFormValid = useMemo(() => {
 

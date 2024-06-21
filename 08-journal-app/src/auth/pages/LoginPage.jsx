@@ -7,6 +7,10 @@ import { AuthLayout } from '../layout/AuthLayout'
 import { useForm } from '../../hooks'
 import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth'
 
+const formData = {
+  email: '',
+  password: '',
+}
 
 export const LoginPage = () => {
 
@@ -16,10 +20,7 @@ export const LoginPage = () => {
   const dispatch = useDispatch(); //dispatch
 
   //se desestructura el hook useForm para extraer email, password, etc. y se inicializa useForm con datos que tendra el Form
-  const {email, password, onInputChange} = useForm({
-    email: '',
-    password: '',
-  });
+  const {email, password, onInputChange} = useForm(formData);
 
   //useMemo meroriza cuando el status es igual a 'checking' devuelve un boolean, la dependencia es [status], si el estatus cambia el valor de 'checking' se vuelve a calcular, si no cambia no se vuelve a calcular
   const isAuthentication = useMemo(() => status === 'checking', [status] );

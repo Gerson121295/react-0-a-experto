@@ -744,6 +744,103 @@ gestionar cuentas de usuario.
 	</head>
 
 
+- S20- JournalApp-Redux-CRUD en Firestore y subida de archivos
+
+#### Prepara la base de datos - cloudFirestore
+
+->Ir al proyecto Journal-app-react en Firestore y 
+-> elegir el producto: CloudFirestore -> Firestore Database -> Crear Base de datos
+-> Elegir ubicacion(por defecto) 
+-> Elegir Modo de Produccion(se debe estar autenticado(allow read, write:)), el modo de prueba(para no autenticado) -> 
+-> Creada la BD -> clic en inciar coleccion -> Proceso de lo que se hara desde la App
+-> Estructura de la BD: id-user1(coleccion) ->Journal(documento) ->notes(coleccion) ->documento(datos de la nota)
+
+->Modificar las reglas de firebase para dejar pasar las peticiones si el user esta autenticado: request.auth != null;
+->Clic en firestore Database->Reglas: modificar campo -> allow read, write: if request.auth != null;  -> Publicar
+
+#### Se agrega SweetAlert 2 para notificaciones a la app -> https://sweetalert2.github.io/
+->Instalar: npm install sweetalert2 
+-> Importaciones:
+	import Swal from "sweetalert2";
+	import 'sweetalert2/dist/sweetalert2.css';
+-> Codigo:
+
+ useEffect(() => {
+        if(messageSaved.length > 0){//valida que messageSaved no sea un String vacio '' para mostrar la alert
+            Swal.fire('Nota actualizada', messageSaved, 'success');
+        }
+   }, [messageSaved])//se dispara cuando cambie el estado(texto o String vacio '') de messageSave
+
+#### Cloudinary.com -> Backend para subir imagenes -> https://cloudinary.com/
+//Firebase ofrece su propio Storage  para almacenar imagenes 
+-> https://firebase.google.com/docs/reference/rest/storage/rest?hl=es-419.
+
+->Ir a https://cloudinary.com/ ->Logearse con correo de Google ->ir a Dashboard ->
+-> Apartado de Product Environment -> Encontraremos:
+-> Cloud name, e ir a -> Go to API Keys ->Encontraremos:
+-> API Keys: que se usa para mandar a un frontend para identificar la app con cloudinary
+->API Secret: se va a tener acceso a eliminar o agregar. modificar el almacenmiento en cloudinary
+->API Environmet variable: se utiliza si estamos en un Backend (tiene todo el storage o almacenamiento en cloudinary
+
+-> Apartado de Product Environment -> Upload -> bajar e ir a Upload presets: aparecen 2 opciones
+->signed:necesitara autenticacion para subir imgs(backend), Unsigned: será publico cualquiera puede subir imgs con la url
+->Empezamos a crear el Storage -> Clic en Add upload preset -> Se agrega los datos.
+->Upload preset name: react-journal
+->Signing Mode: unsigned
+->asset folder: journal //Se define el directorio donde se guardarán las imgs
+->Dejar las demas configuraciones por defecto -> clic en Save.
+
+
+-> en Cloudinary -> clic en el icono de Asset -> Media Library ->Folders -> Estan las imagenes guardadas
+-> Documentacion de subir imagen mediante postman: https://cloudinary.com/documentation/image_upload_api_reference
+
+-> Abrir Postman: Metodo:POST https://api.cloudinary.com/v1_1/demo/image/upload
+-> datos de la URL: demo:cloude name(code)
+->
+-> Abrir Postman: Metodo:POST https://api.cloudinary.com/v1_1/dnuomqvsk/upload
+->En Postman -> Body ->Clic form-data -> KEY escribir file ->  VALUE:Select Files->(selecciona imgs) 
+					-> KEY escribir upload_preset ->  VALUE: escribir: react-journal (nombre cloud)
+->Clic en send ->Obtiene respuesta(datos de la img). secure_url contiene la url de la imagen que se subio al storage de cloudinary
+-> la url de la imagen contiene el id de la imagen para modificarla(eliminar, saturar imagen, bordes, etc) su id es el bloque antes de .png (ycwjfnu52bpec03nh3wf)
+
+{
+    "asset_id": "c1afbaf07b3d9e2ca2c282a91d91fe20",
+    "public_id": "ycwjfnu52bpec03nh3wf",
+    "version": 1718923040,
+    "version_id": "628eb013b13d21d7994f9d7b63c3cd39",
+    "signature": "d11e35a97ee1c667839909d13f5921d8707e12d2",
+    "width": 500,
+    "height": 500,
+    "format": "png",
+    "resource_type": "image",
+    "created_at": "2024-06-20T22:37:20Z",
+    "tags": [],
+    "bytes": 118476,
+    "type": "upload",
+    "etag": "00c823c81bbb4d859b1d9f1b2d2070dc",
+    "placeholder": false,
+    "url": "http://res.cloudinary.com/dnuomqvsk/image/upload/v1718923040/ycwjfnu52bpec03nh3wf.png",
+    "secure_url": "https://res.cloudinary.com/dnuomqvsk/image/upload/v1718923040/ycwjfnu52bpec03nh3wf.png",
+    "asset_folder": "journal",
+    "display_name": "converso",
+    "original_filename": "converso"
+}
+
+--Para ver la imagen en cloudinary: 
+->Cloudinary -> clic icono Asset -> Media Library ->Folders -> Aparece folder: journal - Estan las imagenes guardadas
+
+#### Nota deploy en Vercel
+Si suben la app a Vercel y encuentran un problema al crear una nueva nota, pueden probar 
+a solucionarlo agregando imageUrls: [] en el archivo store/journal/thunks.js 
+en la función "startNewNote":
+
+const newNote = {
+    title: "",
+    body: "",
+    imageUrls: [],
+    date: new Date().getTime()
+};
+
 
 
 

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../store/auth";
 import { FirebaseAuth } from "../firebase/config";
+import { startLoadingNotes } from "../store/journal";
 
 //Este hook es especial porque no va a regresar nada, solo dispara lo que tiene que disparar, No es necesario pero retornaremos el status(indicará si el User esta Autenticado o no)
 export const useCheckAuth = () => {
@@ -21,6 +22,9 @@ export const useCheckAuth = () => {
         //si hay un User hace se despacha el Login se le envia la data del User
         const {uid, email, displayName, photoURL} = user; //se extrae la data desestructurando el objeto User
         dispatch(login({uid, email, displayName, photoURL}));
+
+        //Empieza cargando las notas del usuario
+        dispatch(startLoadingNotes()); //func definida en store/journal/thunks
       })
     
     }, [])//no hay dependencia se ejecuta después de cada renderizado del componente

@@ -1,4 +1,5 @@
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
+import { clearNotesLogout } from "../journal";
 import { checkingCredentials, login, logout } from "./"
 
 export const checkingAuthentication = () => { //(email, password)
@@ -65,6 +66,9 @@ export const startCreatingUserWithEmailPassword = ({email, password, displayName
         //llama funcion logoutFirebase de /firebase/providers        
             await logoutFirebase();
 
+            //funcion para reestablecer los valores de las notes Journal
+            dispatch(clearNotesLogout());
+            
             //Llama a la funcion de Logout definida en /store/auth/authSlice
             dispatch(logout({})); 
         }
