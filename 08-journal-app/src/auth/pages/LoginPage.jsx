@@ -45,7 +45,13 @@ export const LoginPage = () => {
     <AuthLayout 
       title='Login'
       >
+
+       {/*  
+       <h5>variable: {import.meta.env.VITE_HOLA}</h5> {/*  Ejemplo de uso de una variable de entorno en archivo: .env
+      */}
+
       <form 
+        aria-label='submit-form' //es el identificador para tener acceso desde los Test
         onSubmit={onSubmit}
         className="animate__animated animate__fadeIn animate__faster" //animacion de: https://animate.style/ definida en el head del index.html  
       >
@@ -69,6 +75,9 @@ export const LoginPage = () => {
                 placeholder="Contraseña"
                 fullWidth 
                 name='password'
+                inputProps={{ //para tener acceso al campo desde el TEST -Este es diferente a correo debido a que es tipo password
+                  'data-testid': 'password'
+                }}
                 value={password}
                 onChange={onInputChange}
               />
@@ -104,6 +113,7 @@ export const LoginPage = () => {
                   disabled={isAuthentication} //boton estará desabilitado cuando se esta autenticando el user, el estado es 'checking'
                   variant="contained"
                   fullWidth
+                  aria-label='google-btn' //identificador para tener acceso al boton en los TEST
                   onClick={onGoogleSignIn}
                 >
                   <Google /> {/* Icono de Google */}

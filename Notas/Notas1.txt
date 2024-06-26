@@ -843,17 +843,93 @@ const newNote = {
 
 
 
+####Seccion 21 - Pruebas con Redux, Firebase, Firestore y autenticacion
+
+#####Recursos: 
+->Cloudinary SDK-Delete image: https://cloudinary.com/documentation/admin_api#delete_resources
+
+Para borrar las imagenes de los Test:
+->instalar: npm install -D cloudinary
+->instalar: npm install -D setimmediate
+->instalar: npm install -D dotenv  --> Util para cargar las variables de entorno en el lado de NODE
 
 
+- Se modifico el archivo: jest.setup.js  --para cargar las imgs
+// En caso de necesitar la implementación del FetchAPI
+import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
+import 'setimmediate'; // <-- para imagenes
+
+- Se modifico el archivo: jest.config.cjs. Se agrego: transformIgnorePatterns: [],
+
+module.exports = {
+    testEnvironment: 'jest-environment-jsdom',
+    setupFiles: ['./jest.setup.js'],
+    transformIgnorePatterns: [], 
+}
 
 
+#### Crear nuevo proyecto en Firebase para BD de testing
+->Se utiliza el de platzblog -> crear proyecto->named: react-journal-test
+->Deshabilitar Firebase Hosting ->Clic Registrar app
+
+->Copiamos la configuracion: Y la pegamos en firebase/config que sera para el testing
+->la otra sera para dev/prod
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA_sp6L_I.....",
+  authDomain: "platzblog-e....e.firebaseapp.com",
+  projectId: "platzblog-e.......2",
+  storageBucket: "platzblog-e........appspot.com",
+  messagingSenderId: "22..........",
+  appId: "1:22967911....:web:44d7ee7d84d500....",
+  measurementId: "G-QDN2XN...4"
+};
+
+Luego ir al proyecto de platzBlog y dar clic CloudFirestore 
+-> Clic en Firestore Database -> crear base de datos -> elegir modo produccion
+-> clic en Reglas -> cambiar: allow read, write: if true; (todos podran leer y escribir) es para pruebas
 
 
+const collectionRef = collection(FirebaseDB, `${uid}/journal/notes`);
+const {docs} = await getDocs(collectionRef);
+await Promise.all(docs.map(({ref}) => deleteDoc(ref)));
 
 
+-- Variables de Entorno para configuracion de la BD
+crear un archivo: .env   -> en el nivel de package.json
+crear un archivo para test: .env.test   -> en el nivel de package.json
+
+#### Para config de variables de entorno
+->Crear archivo getEnvironments.js dentro de carpeta helpers. helpers/getEnvironments
+
+->Modificar el archivo jest.setup.js aggregar:
+
+	require('dotenv').config({
+    		path: '.env.test'
+	});
+
+//mock para que cuando se haga una solicitud al archivo getEnvironments del lado del testing
+//regresa la funcion getEnvironments  que regresa todas la variables de entorno que se encuentran definidas
+	jest.mock('./src/helpers/getEnvironments', () => ({
+    		getEnvironments: () => ({ ...process.env})
+	}));
 
 
+##### NOTA: Por seguridad no se recomienda subir las variables de entorno a github ser recomienda:
+->Copiar el archivo: .env y crear otro llamado: .env.template 
+-> El archivo .env.template tendra todas las variables de entorno necesarias, sin sus valores, 
+-> para que las personas llenen los campos con sus data.
+->Luego abrir el archivo: gitignore y agregar los archivos que contienen las variables de entorno 
+->sencibles como: .env y .env.test(opcional) esto para que estos archivos no se puedan subir a GITHUB
 
+VITE_HOLA=
+
+VITE_APIKEY = 
+VITE_AUTHDOMAIN=
+VITE_PROJECTID=
+VITE_STORAGEBUCKET=
+VITE_MESSAGINGSENDERID=
+VITE_APPID=
 
 
 

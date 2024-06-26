@@ -11,7 +11,8 @@ export const checkingAuthentication = () => { //(email, password)
 export const startGoogleSignIn = () => {
     return async(dispatch) => {
         dispatch(checkingCredentials()); //dispatch el checkingCredentials de authSlice cambia el status:'not-authenticated' a 'checking'
-        const result = await singInWithGoogle(); //console.log({result})
+        const result = await singInWithGoogle(); 
+        //console.log({result}) //-->para los tests de probar este Thunk se habilito
 
         //Si el user decide cancelar el login por google hace el logout de authSlice proviene del store
         if(!result.ok) return dispatch(logout(result.errorMessage));

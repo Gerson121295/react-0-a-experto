@@ -4,7 +4,9 @@
 export const fileUpload = async(file) => { //recibe como parametro el archivo a subir
     
     if(!file) throw new Error('No tenemos ningun archivo a subir'); //si se cancela, o no se manda imagenes a subir luego de dar clic al boton subir
-    
+    //if(!file) return null; //--> para los test, esta linea, reemplaza al anterior: si no se manda el archivo retorna null,
+
+
     const cloudUrl = 'https://api.cloudinary.com/v1_1/dnuomqvsk/upload'; //Ruta a insertar imgs
 
     //formData
@@ -34,7 +36,7 @@ export const fileUpload = async(file) => { //recibe como parametro el archivo a 
     } catch (error) {
         //console.log(error);
         throw new Error(error.message);
-        
+        //return null; //--> para los test, esta linea reempla a la anterior(throw new...)
     }
 }
 
