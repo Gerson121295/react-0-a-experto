@@ -932,6 +932,76 @@ VITE_MESSAGINGSENDERID=
 VITE_APPID=
 
 
+## Seccion 22: MERN Calendar - Estructura y Diseño
+
+-- Instalaciones:
+-> Instalar React Router DOM - Para rutas: ->	npm install react-router-dom
+-> Add Bootstrap: Pegar el CSS CDN en el head del index.html -> 
+
+Recursos:
+->Estilos de LoginPage: https://gist.github.com/Klerith/74a0c4426599f3bc25b7f4e8d95b6a7f
+->Para Font-awesome iconos ir a -> https://cdnjs.com/libraries/font-awesome
+->copiar la version reciente(la primera) clic en "</>" y pegar en el head del index.html
+
+->Calendario: https://www.npmjs.com/package/react-big-calendar  ->Usar: date-fns v2
+-> instalar: npm i react-big-calendar     ->  npm i date-fns
+-> Estilo del Calendario pegar como import: import 'react-big-calendar/lib/css/react-big-calendar.css'
+-> calendar-messages-es.js -> https://gist.github.com/Klerith/1658fc368898dd673fc5a9a01ccb12ff
+
+->Modal: 
+->Diseño del Modal
+->https://www.npmjs.com/package/react-modal   -> Instalar: npm i react-modal
+->Code css del modal: https://gist.github.com/Klerith/5f490092ce9bd5775cb1d91162be0cea
+
+->Contenido del Modal
+->Selector de fechas en el form: https://www.npmjs.com/package/react-datepicker ->npm i react-datepicker
+->Code html del form: https://gist.github.com/Klerith/8c9b2178830045b3f5126422bd0223e1
+
+-> Para alertas SweetAlert2: npm i sweetalert2
+
+->Instalacion de Redux Toolkit
+-> clic en Get Started -> https://redux-toolkit.js.org/introduction/getting-started
+-> Quick Start -> Instalar -> npm install @reduxjs/toolkit react-redux
+
+
+
+//Forma de hacer la rutas con validacion
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
+import { LoginPage } from "../auth";
+import { CalendarPage } from "../calendar";
+ 
+const routes = [
+  {
+    path: "/auth/*",
+    element: <LoginPage />,
+  },
+  {
+    path: "/*",
+    element: <CalendarPage />,
+  },
+];
+ 
+export const AppRouter = () => {
+  const authStatus = "not-authenticatedr";
+ 
+  const router = createBrowserRouter([
+    authStatus === "not-authenticated" ? routes[0] : routes[1],
+    {
+      path: "/*",
+      element: <Navigate to={"/auth/login"} />,
+    },
+  ]);
+ 
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
+};
 
 
 
