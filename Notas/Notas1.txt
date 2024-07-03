@@ -1006,19 +1006,199 @@ export const AppRouter = () => {
 
 
 
+##Seccion 23: CalendarApp - Backend - Node, Express, Mongo
+
+###Recursos:
+->https://www.restapitutorial.com/httpstatuscodes
 
 
+->Crear carpeta -> 10-calendar-backend ->Abri en VisualStudioCode -> abrir terminal -> 
+->ejecutar: npm init -y (npm init) //instala dependencias en un proyecto de Node.js se crea el archivo package.json
+
+->Forma 2:
+-> abrir cmd -> ir a la ruta de la carpeta: 10-calendar-backend -> ejecutar: npm init -y
+
+->Dentro de 10-calendar-backend. crear archivo: index.js: agregar: console.log('Hi mundo');
+->Ejecutar archivo index.js:->abrir terminal en VSC(o cmd) ejecutar: node index.js 
+
+->Nodemon ejecutara la aplicacion automaticamente cada vez que se halla realizado una modificacion.
+-> Instalar Nodemon de forma global abrir cmd o powershell entrar en modo Administrador ->
+-> npm i nodemon -g
+->Ejecutar index.js con nodemon:->abrir terminal en VSC(o cmd) ejecutar: nodemon index.js 
+-> Gracias a nodemon se podra modificar el index.js y se vera reflejado los cambios automaticamente en la terminal.
+->precionar ctrl + c para detener la ejecucion.
+
+->Configuracion para ejecutar Dev y Prod en package.json
+->abrir package.json -> agregar en "scripts" los comandos a ejecutar
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+
+->Ahora al ejecutar en la terminal:
+->dev: npm run dev  //Se queda ejecutando el index.js y se mostrará los cambios automaticamente en la terminal.
+->prod: npm start   //ejecuta el index.js 1 vez mostrando el resultado.
+->precionar ctrl + c para detener la ejecucion.
+
+###Express, es un framework para crear aplicaciones web, APIs y web services
+-- Configurando Express para que se pueda crear un servidor que tenga los endpoint y ayude a la creacion del backend server
+->Instalar Express, dentro de terminal de VSC ejecutar: npm i express    //instarlar version especifica: npm i express@4.17.4
 
 
+--Configuracion del Backend Server:
+const express = require('express'); //import express from 'express';
+
+//crear el servidor de express
+const app = express();
+
+//Rutas
+app.get('/', (req, res) => {
+    res.json({
+        ok: true
+    })
+});
+
+//Escuchar peticiones
+//Recibe el puerto en el cual se ejecutará, callback se ejecutará cuando el servidor express este arriba
+app.listen(4000, ()=> { 
+    console.log(`Servidor corriendo en puerto ${4000}`);
+}) 
+
+->Abrir el navegador o postman - GET: http://localhost:4000/   
+->precionar ctrl + c para detener la ejecucion.
+
+-> Dentro de: 10-calendar-backend -> Crear carpeta: public dentro de esta crear 
+-> styles.css y index.html (dentro del head importar el archivo styles.css)
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css"
+    <title>Demo App</title>
+</head>
+<body>
+    <h1>bloqueado</h1>
+</body>
+</html>
 
 
+-> use() en express es conocido como Un middleware que es una funcion que se ejecuta cuando 
+-> alguien hace una peticion al servidor. -> Es una funcion que se ejecuta cuando pase por algun lugar
+-> Middleware es una funcion que se va a ejecutar antes de cualquier otra cosa
 
 
+#### Crear variables de entorno
+->instalar: npm i dotenv
+->Crear archivo: .env en el nivel de package.json
+
+->Archivo .env  ->Agregar:  PORT=4000
 
 
+->Agregar variables de entorno al archivo: index.js
+const express = require('express'); //import express from 'express';
+require('dotenv').config();
+
+//console.log(process.env) //todos los procesos corriendo en el envirement-variables de entorno
+
+//crear el servidor de express
+const app = express();
+
+//Directorio Publico
+app.use(express.static('public'));
+
+//Rutas
+/* app.get('/', (req, res) => {
+    res.json({
+        ok: true
+    })
+}); */
+
+//Escuchar peticiones
+//Recibe el puerto en el cual se ejecutará, callback se ejecutará cuando el servidor express este arriba
+app.listen(process.env.PORT, ()=> { 
+    console.log(`Servidor corriendo en puerto ${process.env.PORT}`);
+}); 
 
 
+//Crear un nuevo Usuario:
+->Postman ->POST: localhost:4000/api/auth/new  ->Elegir: Body ->raw -> 
+-> JSON -> {"name":"Gerson", "email": "gerson@gmail.com", "password":"123456"}
 
+
+//Express Validator 
+-> npm i express-validator
+
+//Configuracion de MongoDB
+->Iniciar con Mongo -> https://www.mongodb.com/ ->Start free
+->otra opcion: https://www.mongodb.com/es/cloud/atlas/efficiency?utm_source=google&utm_campaign=gs_americas_canada_search_brand_atlas_desktop&utm_term=mongo%20atlas&utm_medium=cpc_paid_search&utm_ad=e&gclid=Cj0KCQjwiYL3BRDVARIsAF9E4GfQWQYG_pbTlJA5eixJKM75IaFYqk4nUBlKe0iXkKn4kXc1HZmKSikaAtKzEALw_wcB
+->Para la comunicacion de Node hacia Mongo: https://mongoosejs.com/
+
+
+->Iniciar sesion en Mongo DB-> Elegir: DEVELOP & DEPLOY click -> Visit MongoDB Atlas
+->Ir a: Database ->Cluster -> Create a cluster clic Build a Cluster ->Elegir opcion gratis Free
+-> dar nombre al cluster: calendarDB ->dejar las Config. por defecto por defecto. -> clic Create Development o cluster
+->(NOTA. Solo se permite tener 1 cluster Free - gratis Revisar si ya tenemos un cluster activo, 
+-> si ya tenemos activarlo si no clic en Terminar para crear un nuevo Free.
+
+-> Aun no crear el usuario y password para el Cluster, clic en pestaña: Database: 
+->Esperar que se halla creado el cluster
+
+->Cuando Aparece el Cluster: calendarDB -Creamos el Usuario y el password: -> Clic en pestaña DataBase Access
+->Clic en ADD NEW DATABASE USER -> Seleccionar Password 
+->Dar nombre del user: mern_user GMEP Y password: calendarDB+4numeros -> 
+->Elegir Role: Read and write to any database -> click Add New User
+->
+
+###Conectarnos al Cluster usando: MongoDB Compass al que necesita user y password 
+->Aparece el Cluster: calendarDB -> click en Connect -> clic Connect using MongoDB Compass
+->Elegir la forma de conectse a mongoDB: 
+->Seleccionar: Developer Tools, Compass(GUI) y Check I have installed Compass.  
+-> NOTA: Si no se tiene instalado no checkear para que aparezca el link para instalar el mongoDB Compass
+->Aparece las credenciales para conectarse:
+
+1. Add your connection string to Compass
+	mongodb+srv://gerson:<password>@calendardb.btmik1e.mongodb.net/
+Replace <password> with the password for the gerson user. Ensure any option params are 
+URL encoded.
+
+-Abrir el programa MongoDB Compass
+-> En URI agregar: mongodb+srv://mern_user:calendarDB+4numeros@calendardb.btmik1e.mongodb.net/
+
+
+#### Conectar Node a Mongo Atlas
+->Para la comunicacion de Node hacia Mongo: https://mongoosejs.com/
+->Dentro del proyecto 10-calendar-backend instalar: npm i mongoose
+->Configuracion de la conexion a la database desde Node a mongoDB: database/config.js
+->la cadena de conexion se define en las variables de entorno en 
+->el archivo .env -> se agrego: mern_calendar(es la BD de calendar)
+
+PORT=4000
+DB_CNN=mongodb+srv://mern_user:calendarDB+4numeros@calendardb.btmik1e.mongodb.net/mern_calendar
+
+
+####Encriptar la contraseña
+->Encriptar contraseña instalar: npm i bcryptjs
+
+####Generar un JSON Web Token
+->JWT tiene 3 partes el 
+->HEADER[Tipo de algoritmo para encriptacion y tipo de JWT], 
+->PAYLOAD[La informacion que se graba dentro del token(datos de User:id,name,apellido)es publico, no agregar informacion sencible como contraseñas], 
+->FIRMA[Una palabra secreta, Firma con la que se crea el token es la misma con la que se valida si es el Usuario autenticado quien realiza una accion
+->esa firma debe hacer match con la que se envia desde el User, se le agrega la fecha de expiracion(cada 2 horas o a eleccion)]
+->Si el token es manipulado o cualquier letra manipulada ya no será valido
+
+->https://jwt.io/
+->Instalar: npm i jsonwebtoken
+->Crear SECRET_JWT_SEED variable de entorno en .env Crear una palabra secreta, esta palabra debe ser secreta si alguien 
+-> la tiene esta semilla va a poder firmar los tokens.
+->Si se modifica la palabra secreta SECRET_JWT_SEED definida en .env automaticamente todos los token quedan invalidos, los user tendran que autenticarse de nuevo.  
+->TOKEN GENERADO: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2Vyc29uIiwiaWF0IjoxNzE5OTgyMjE4LCJleHAiOjE3MTk5ODk0MTh9.NVXb5Owq_8hJ8HBSdtoOI5tfBtXEi6LtDYrD5_CsZG0
+
+#####Configurar CORS -Para que el Frontend acceda al recurso API del backend
+->enable-cors.org -> https://www.npmjs.com/package/cors  ->Instalar: npm i cors
 
 
 
