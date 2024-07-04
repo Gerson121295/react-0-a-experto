@@ -2,7 +2,7 @@
 //Se desestructura mongoose y se extrae Schema y model
 const {Schema, model} = require('mongoose'); //const mongoose = require('mongoose');
 
-//Informacion del objeto Usuario a guardar en la BD
+//Informacion del objeto Usuario a guardar en la BD y crear la Coleccion con estos campos
 
 //UsuarioSchema será un Schema
 const UsuarioSchema = Schema({
@@ -10,19 +10,19 @@ const UsuarioSchema = Schema({
     //Campo name
     name:{
         type: String, //tipo String
-        require: true, //es requerido
+        required: true, //es requerido
     },
     //Campo email
     email:{
         type: String, 
-        require: true,
+        required: true,
         unique: true, //Email sera unico, no podra repetirse por otro User
     },
 
     //Campo password
     password: {
         type: String,
-        require: true,
+        required: true,
     }
 
 });

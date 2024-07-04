@@ -1202,6 +1202,9 @@ DB_CNN=mongodb+srv://mern_user:calendarDB+4numeros@calendardb.btmik1e.mongodb.ne
 
 
 
+##Seccion 24: Backend - Eventos del calendario - CRUD
+#Instalar moment para validar Fechas: npm i moment
+
 
 
 

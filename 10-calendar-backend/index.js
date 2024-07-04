@@ -27,12 +27,12 @@ app.use(express.json()); //recupera la data insertada del User en un Post
 
 
 //Rutas
-//TODO: auth //crear, login, renew
-//El contenido del archivo /routes/auth lo mostrará en la ruta: /api/auth - localhost:4000/api/auth
+//El contenido del archivo(rutas:crear, login, renew) /routes/auth lo mostrará en la ruta: /api/auth - localhost:4000/api/auth
 app.use('/api/auth', require('./routes/auth'));
 
+//El contenido del archivo(rutas: CRUD-Eventos) /routes/events lo mostrará en la ruta: /api/auth - localhost:4000/api/events
+app.use('/api/events', require('./routes/events'));
 
-//TODO: CRUD: Eventos
 
 //Escuchar peticiones
 //Recibe el puerto en el cual se ejecutará, callback se ejecutará cuando el servidor express este arriba

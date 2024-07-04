@@ -16,7 +16,7 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const { crearUsuario, loginUsuario, revalidarToken } = require('../controllers/auth');
 const { validarJWT } = require('../middlewares/validar-jwt')
 
-//Crear Usuario ->POST: localhost:4000/api/auth/new
+//Crear Usuario ->POST: localhost:4000/api/auth/new  -> { "name":"Paula", "email": "paula@gmail.com", "password":"123456" }
 router.post(
     '/new', 
     [//midleware: es una funcion que se va a ejecutar antes de otra.
@@ -28,7 +28,7 @@ router.post(
     crearUsuario,
 );
 
-//loginUsuario ->POST: localhost:4000/api/auth/
+//loginUsuario ->POST: localhost:4000/api/auth/  -> { "email": "paula@gmail.com", "password":"123456" }
 router.post(
     '/',
      [//midleware: es una funcion que se va a ejecutar antes de otra.
@@ -40,7 +40,7 @@ router.post(
 );
 
 //revalidarToken-Renovar Token 2hrs mientras User este activo 
-//->POST: localhost:4000/api/auth/renew  Token se recibe en el Headers, en key y value escribir lo que esta dentro de parentesis: key(x-token) value(ABC123)
+//->GET: localhost:4000/api/auth/renew  Token se recibe en el Headers, en key y value escribir lo que esta dentro de parentesis: key(x-token) value(ABC123)
 //hacer el login en Postman copiar el TOken y pegarlo en el value de key x-token
 
 router.get(
