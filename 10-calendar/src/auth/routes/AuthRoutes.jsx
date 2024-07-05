@@ -12,4 +12,6 @@ export const AuthRoutes  = [
         path: "*", //Si se coloca un "/" o  "*" en una ruta, quiere decir que cualquier ruta que pase por ahí, sea cual sea, va a mostrar el componente específicado en path
         element: <Navigate to={"/auth/login"} />
       },
+
+
 ];

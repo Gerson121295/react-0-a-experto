@@ -57,7 +57,7 @@ export const CalendarPage = () => {
 
     return (
       <>
-        <Navbar />
+        <Navbar /> 
 
         <Calendar
           culture='es' //agrega el idioma español al calendario

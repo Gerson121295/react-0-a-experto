@@ -1201,18 +1201,97 @@ DB_CNN=mongodb+srv://mern_user:calendarDB+4numeros@calendardb.btmik1e.mongodb.ne
 ->enable-cors.org -> https://www.npmjs.com/package/cors  ->Instalar: npm i cors
 
 
-
 ##Seccion 24: Backend - Eventos del calendario - CRUD
 #Instalar moment para validar Fechas: npm i moment
 
 
+##Seccion: 25 Despliegue del backend a la nube -Railway
+- Utlizar el correo de github para registrarse en Railway
+- Subir el proyecto Backend 10-calendar-backend a Github ->
+->Crear repositorio en github -> Mover nuestro proyecto a una carpeta nueva copy/paste ->
+->crear el archivo .env.template para agregar solo las variables de entorno 
+->mas no sus valores: 
+	PORT 
+	DB_CNN  
+	SECRET_JWT_SEED
+-> Crear archivo .gitignore y agregar: estos no se subiran a github
+	.node_modules
+	.env
+->
+
+->en la carpeta de nuestro proyecto -> clic derecho -> Git Bash Here o abrir la carpeta del
+-> proyecto en VSC -> y ejecutar estos comandos:
+->git init  //inicia el repositorio
+->git add .  //agrega todo para subirlo a un stage y tomar una foto
+->git commit -am "Subir a github app 10-calendar-backend"
+--Conectar o subir el repositorio de git a github
+->git remote add origin https://github.com/Gerson121295/Calendar-backend-MERN.git
+->git branch -M main
+->git push -u origin main   //subir el proyecto al repositorio de github
 
 
+--Desplegar App 10-calendar-backend a Railway: https://railway.app/
+->Crear cuenta en railway(usar cuenta de github para asi enlazar repositorios)
+->Clic en Crear new Proyect -> Deploy from Github repo -> por primera vez aparece
+-> se de configurar Railway App la cual dar clic en permitir o Only select repositories(elegí esta opcion)
+->Luego seleccionar el repositorio copiar el nombre del proyecto de ->github(Calendar-backend-MERN) 
+->a desplegar y pegarlo ->Install & Authorize ->Dar la contraseña de github
+->luego clic de nuevo: Deploy from Github repo -> ahora seleccionar el proyecto seleccionadoCalendar-backend-MERN
+->clic Add variables -> escanea nuestro codigo eliminar variable del puerto y definir la de DB_CNN y SECRET_JWT_SEED
+->Otra forma de agregar las variables dar clic en RAW EDITOR Y pegar las variables de entorno definido en .env
+->excepto por el puerto ese no, ese lo dará Railway
+->Clic en Deploy en el apartado del nombre de la app -> ir a Settings ->Networking
+->public Networking -> se definio el puerto 8080 ->clic en Generate Domain ->
+->calendar-backend-mern-production-gep.up.railway.app
+
+->Probar en Postman la app desplegada en railway
+->Para todos los enpoints cambiar: localhost:4000/  por el dominio generado por railway: calendar-backend-mern-production-gep.up.railway.app
+-> Login- Antes:POST localhost:4000/api/auth/    { "email": "gerson@gmail.com", "password":"123456" }
+-> Login- Desplegado:POST https://calendar-backend-mern-production-gep.up.railway.app/api/auth
+-> GetEvents - https://calendar-backend-mern-production-gep.up.railway.app/api/events
+
+->SI da error en conexion a la BD ir a mongoDB atlas ->nuestro cluster -> Network Access 
+-> clic en allow access form anywere  o agregar access list entry: 0.0.0.0
 
 
+###Seccion 26 - MERN Calendario + Backend
+-> Crear variables de entorno en app del frontend-> 10-calendar
+
+->En carpeta helpers crear archivo: getEnvVariables.js para exportar las variables de entorno de .env
+
+ export const getEnvVariables = () => {
+    //importa todas las variables de entorno
+    import.meta.env;
+    return{
+        ...import.meta.env //esparse y exporta las variables de entorno
+    }
+}
+
+-> Crear archivo: .env  agregar:  VITE_API_URL=http://localhost:4000/api
+-> Crear archivo: .env.template  agregar:  VITE_API_URL=
+-> en archivo .gitignore agregar: .env  para no exportar a github este archivo
+-> el archivo a exportar sera: .env.template en el cual los Usuario insertarán sus configuraciones.
+-> Crear archivo: README.md 
+
+->llamara la funcion getEnvVariables() en //router/AppRouter.jsx
 
 
+####Axios - Configurar cliente para peticiones HTTP
+->Instalar axios: npm i axios
 
+->Forma de exportar archivo en el index.js cuando es export default archivo:
+
+const calendarApi = axios.create({ baseURL: VITE_API_URL});
+export default calendarApi;
+
+-> Exportar en el index.js:  export { default as calendarApi } from './calendarApi';
+
+
+###SweetAlert2 - Mostrar mensajes de alerta -> Instalar: 
+-> Tablas en React - usar React Table.
+-> https://www.npmjs.com/package/react-table
+-> tutorial:
+-> https://www.paradigmadigital.com/dev/agilizar-desarrollo-tablas-react/
 
 
 
