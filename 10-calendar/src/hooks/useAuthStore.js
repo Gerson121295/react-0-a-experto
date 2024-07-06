@@ -5,6 +5,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import calendarApi from "../../api/calendarApi";
 import { clearErrorMessage, onChecking, onLogin, onLogout } from "../store/auth/authSlice";
+import { onLogoutCalendar } from "../store";
 
 
 export const useAuthStore = () => {
@@ -113,9 +114,9 @@ export const useAuthStore = () => {
     //Empieza proceso de logout - Borrar data(token) guardada en el localStorage
     const startLogout = () => {
         localStorage.clear();
-        dispatch(onLogout());
+        dispatch(onLogout()); //limpia los estados de auth al hacer logout
+        dispatch(onLogoutCalendar()); //limpia los estados de calendar al hacer logout
     }
-
 
     //Funciones y propiedades que retorna el Hook
     return{

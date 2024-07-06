@@ -1,17 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Calendar} from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import { Navbar, CalendarEvent, CalendarModal, FabAddNew, FabDelete } from "../"
 import { localizer, getMessagesES } from '../../helpers'
-import { useCalendarStore, useUiStore } from '../../hooks';
+import { useAuthStore, useCalendarStore, useUiStore } from '../../hooks';
 
 
 export const CalendarPage = () => {
 
+  //obtenemos del hook el user
+  const { user } = useAuthStore();
+
   //se extrae propiedades y funciones desestructurando del hook useCalendarStore
-  const {events, setActiveEvent } = useCalendarStore();
+  const {events, setActiveEvent, startLoadingEvents } = useCalendarStore();
 
   //se extrae propiedades y funciones desestructurando  del hook useUiStore
   const {openDateModal} = useUiStore();
@@ -20,10 +23,15 @@ export const CalendarPage = () => {
   const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week');
 
     const eventStyleGetter = ( event, start, end, isSelected) => {
-        
+
+      console.log(event); //event.user.id - id del usuario dueño del evento
+      
+      //Valida si el user actual(user.uid) autenticado creo el evento(event.user._id). id, asi esta definido en la DB
+      const isMyEvent = ( user.uid === event.user._id)  || (user.uid === event.user.uid); 
+
         //Estilo de la nota guarda en el calendario
         const style = {
-            backgroundColor: '#347CF7',
+            backgroundColor: isMyEvent ? '#347CF7' : '#465660', //si el evento es del usuario actual lo muestra de un color si no, de otro
             borderRadius: '0px',
             opacity: 0.8,
             color: 'white'
@@ -53,6 +61,11 @@ export const CalendarPage = () => {
       localStorage.setItem('lastView', event); //"lastView" sera la key
       //setLastView(event); //no es necesario, el calendario lo cambia al tener el valor por defecto
     } 
+
+    //Carga los eventos que estan en la BD atraves del backend y los muestra
+    useEffect(() => {
+      startLoadingEvents();
+    }, []) //solo se dispara 1 vez cuando carga el component
 
 
     return (
