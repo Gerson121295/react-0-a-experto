@@ -1294,6 +1294,40 @@ export default calendarApi;
 -> https://www.paradigmadigital.com/dev/agilizar-desarrollo-tablas-react/
 
 
+->Cuando se esta editando un evento no se estan cargando 
+->las fechas del evento correctamente. Mi solución.
+->En el CalendarModal.js
+
+-> Modificar los value de cada <DateTimePiker />
+```
+value={  (activeEvent) ? activeEvent.start : dateStart }
+value={   (activeEvent) ? activeEvent.end : dateEnd }
+```
+
+
+##Seccion 28 Fin el MERN - Desplegarlo a produccion
+
+--Recomendable tener aparte el Backend y Frontend
+--Se puede desplegar el frontend dentro del backend por medio de la carpeta public
+
+->Abrir el proyecto del frontend en Visual Studio Code y en la terminal ejecutar ->
+->npm run build  //para realizar el proceso de optimizacion y construccion de nuestra App
+->En el proyecto de react se crea carpeta dist ->tiene los assets(codigo de react) y index.html nuestro sitio web
+->copiar la carpeta assets y el archivo: index.html y pegarlo en la carpeta public de la app del backend, 
+->reemplazando esos archivos si en caso existieran ahi.
+->Levantar el backend: npm run dev
+-> abrir el navegador y ya no corre en: http://localhost:5173 ahora esta en: http://localhost:4000
+
+
+##Desplegar backend y fronted a la nube
+- En la app de react calendar -> ir al archivo: .env y agregar en la variable de entorno
+-> VITE_API_URL=https://calendar-backend-mern-production-gep.up.railway.app/api  
+->(la ruta del backend que se desplego en railway + /api).
+--Como ya se tiene subido el backend en Railway por medio de GITHUB Proceder a subir los
+->cambios realizados a github y automaticamente deberá desplegarse(ya que el frontend se encuentra
+->en la carpeta public del backend.
+
+-→nuestra app desplega: calendar-backend-mern-production-gep.up.railway.app
 
 
 

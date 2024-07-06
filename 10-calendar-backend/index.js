@@ -1,4 +1,5 @@
 
+const path = require('path');
 
 const express = require('express'); //import express from 'express';
 require('dotenv').config();
@@ -33,9 +34,15 @@ app.use('/api/auth', require('./routes/auth'));
 //El contenido del archivo(rutas: CRUD-Eventos) /routes/events lo mostrará en la ruta: /api/auth - localhost:4000/api/events
 app.use('/api/events', require('./routes/events'));
 
+//Nota: Debido a que se desplego el frontend en la carpeta public(asset, index.html) del backend
+//cualquier peticion que no sean las rutas anterior: /api/auth', /api/events', redirija a servir el contenido de public/index.html
+app.use('*', (req, res) => { //cualquier ruta no definida redirige a index.html
+    res.sendFile(path.join( __dirname, 'public/index.html'));
+});
+
 
 //Escuchar peticiones
 //Recibe el puerto en el cual se ejecutará, callback se ejecutará cuando el servidor express este arriba
 app.listen(process.env.PORT, ()=> { 
-    console.log(`Servidor corriendo en puerto ${process.env.PORT}`);
+    console.log(`Servidor corriendo en puerto ${process.env.PORT}`); //4000
 }); 

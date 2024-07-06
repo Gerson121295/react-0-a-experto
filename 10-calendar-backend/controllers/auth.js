@@ -130,12 +130,12 @@ const revalidarToken = async(req, res= response) => {
     //Generar un nuevo JWT y lo retornar en la respuesta -recibe el payload(uid, name) para agregarlo al token
     const token = await generarJWT(uid, name);
 
-
+    //retorna la respuesta al usuario
     res.json({
         ok: true,
-        token //retorna el nuevo token generado
-        //uid, //uid:uid  /enviamos la uid del User en la respuesta
-        //name,
+        token, //retorna el nuevo token generado
+        uid, //uid:uid  /enviamos la uid del User en la respuesta
+        name,
         //msg: 'renew'
     })
 }
