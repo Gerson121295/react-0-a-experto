@@ -10,6 +10,7 @@ import DatePicker, {registerLocale} from "react-datepicker"; //Selector de fecha
 import "react-datepicker/dist/react-datepicker.css"; //estilo del Selector de fechas en el form
 import { es } from 'date-fns/locale/es'; //cambiar a idioma español el selector de fechas
 import { useCalendarStore, useUiStore } from "../../hooks/";
+import { getEnvVariables } from "../../helpers";
 
 registerLocale('es', es) //Se define el codigo del idioma a cambiar Español
 
@@ -25,9 +26,12 @@ const customStyles = {
     },
   };
 
+
+  //Si es diferente del ambiente de 'test' se puede ejecutar la linea Modal.setAppElement esto xq en test no lo reconoce. 
+  //if(getEnvVariables().VITE_MODE !== 'test'){
 //Para que el modal se sobreponga ante todo
   Modal.setAppElement('#root'); //recibe el id root del body del index.html
-
+  //}
 
 export const CalendarModal = () => {
 

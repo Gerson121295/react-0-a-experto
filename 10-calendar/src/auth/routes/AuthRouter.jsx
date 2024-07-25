@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom"
 import { useAuthStore } from "../../hooks";
 import { useEffect } from "react";
+import { LoginPage } from "../pages/LoginPage";
 
 export const AuthRouter = () => {
 
@@ -16,6 +17,7 @@ export const AuthRouter = () => {
     return (
         <>  
         <Outlet/>
+       {/*  <LoginPage /> */}  {/* para pruebas se renderizo */}
         </>
     )
     }

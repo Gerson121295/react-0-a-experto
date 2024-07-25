@@ -25,7 +25,8 @@ export const useUiStore = () => {
 
     //Toggle: Si esta abierto el modal, al dar clic afuera se cierre y si no esta abierto al dar 2 clic en el evento o nota se abra
     const toggleDateModal = () => {
-        (isDateModalOpen) ? openDateModal() : closeDateModal();
+        //(isDateModalOpen) ? openDateModal() : closeDateModal();
+        (isDateModalOpen) ? closeDateModal() : openDateModal();
     }
 
     //propiedades y metodos o funciones que retorna el Hook

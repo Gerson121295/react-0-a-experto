@@ -1,11 +1,11 @@
-import { useCalendarStore, useUiStore} from "../../hooks"
+import { useCalendarStore} from "../../hooks/useCalendarStore"
 
 export const FabDelete = () => {
 
     //Se desetructura el hook useCalendarStore para obtener la func. startDeletingEvent
     const { startDeletingEvent, hasEventSelected } = useCalendarStore();
 
-    const {isDateModalOpen} = useUiStore();
+    //const {isDateModalOpen} = useUiStore();
 
     //Maneja el abrir el modal al precionar el boton para agregar nueva nota o evento
     const handleDelete = () => {
@@ -15,6 +15,7 @@ export const FabDelete = () => {
     return (
        
         <button 
+            aria-label="btn-delete" //es key para tests
             className="btn btn-danger fab-danger"
             onClick={handleDelete} //abre el modal al dar clic en el boton
             style={{

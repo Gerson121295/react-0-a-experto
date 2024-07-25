@@ -36,21 +36,63 @@ module.exports = {
 };
 ```
 
-5. Opcional, pero eventualmente necesario, crear archivo Jest config y setup:
+
+5. Para componentes que importen CSS, crear un archivo llamado: tests/mocks/styleMock.js
+	module.exports = {};
+
+
+6. Opcional, pero eventualmente necesario, crear archivo jest.config.cjs y setup:
 
 __jest.config.cjs__
-```
+
 module.exports = {
     testEnvironment: 'jest-environment-jsdom',
-    setupFiles: ['./jest.setup.js']
+    setupFiles: ['./jest.setup.js'],
+    transformIgnorePatterns: [],
+    
+	//... transform: { '\\.[jt]sx?$': 'babel-jest', }, ... };  //opcional
+
+    // ModuleNameMapper sólo si ocupamos importar CSS en nuestros componentes para el testing
+    moduleNameMapper: {
+        '\\.(css|less)$': '<rootDir>/tests/mocks/styleMock.js',
+    },
 }
-```
+
+
+
 
 __jest.setup.js__
 ```
 // En caso de necesitar la implementación del FetchAPI
 import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
+
 ```
+
+	__jest.setup.js__
+// En caso de necesitar la implementación del FetchAPI
+// yarn add -D whatwg-fetch
+// import 'whatwg-fetch'; 
+
+// En caso de encontrar paquetes que lo requieran 
+// yarn add -D setimmediate
+// import 'setimmediate';
+
+// En caso de tener variables de entorno y aún no soporta el import.meta.env
+// yarn add -D dotenv
+// require('dotenv').config({
+//     path: '.env.test'
+// });
+
+// Realizar el mock completo de las variables de entorno
+// jest.mock('./src/helpers/getEnvVariables', () => ({
+//     getEnvVariables: () => ({ ...process.env })
+// }));
+
+7. Crear archivo: .env.test   //Contendra las variables de entorno para testing
+
+
+
+
 ### La extension para los archivos de pruebas
 Dentro de la carpeta del proyecto a nivel de src Crear una carpeta llamada tests
 Esta sera para pruebas un espejo de todas las carpetas y los archivos de la carpeta src.

@@ -1330,6 +1330,9 @@ value={   (activeEvent) ? activeEvent.end : dateEnd }
 -→nuestra app desplega: calendar-backend-mern-production-gep.up.railway.app
 
 
+-- Codigo del Curso
+https://github.com/Klerith/react-mern-calendar/tree/fin-seccion-29
+
 
 
 

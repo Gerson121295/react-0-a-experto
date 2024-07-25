@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom"
 import { useAuthStore } from "../../hooks";
 import { useEffect } from "react";
+import { CalendarPage } from "../pages/CalendarPage";
 
 export const CalendarRouter = () => {
     
@@ -16,6 +17,7 @@ export const CalendarRouter = () => {
     return (
         <>  
             <Outlet />
+            {/* <CalendarPage /> */}  {/* para pruebas se renderizo */}
         </>
     )
 
