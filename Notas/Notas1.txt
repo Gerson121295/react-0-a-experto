@@ -1332,12 +1332,34 @@ value={   (activeEvent) ? activeEvent.end : dateEnd }
 
 -- Codigo del Curso
 https://github.com/Klerith/react-mern-calendar/tree/fin-seccion-29
+Link de Presentaciones: https://drive.google.com/file/d/1VMCNssc7vEQ9ay2w2pj-1gvAamNd_zVe/view?usp=drive_link
 
 
+-Seccion 30-Fin del Curso
+
+-- Más información para seguir aprendiendo
+
+-> React Redux - QuickStart Oficial
+-> https://react-redux.js.org/introduction/getting-started
+
+-> QuickStart - Jest
+-> https://jestjs.io/docs/getting-started
+
+-> Introducción a Firestore
+-> https://firebase.google.com/docs/firestore?gclid=CjwKCAjw_qb3BRAVEiwAvwq6Vmr_iWcEeIUaQkR59-lfBTnTw5mhiJlb0nS21uwcNUM54NnBLwFhFhoCTG4QAvD_BwE&hl=es-419
+
+-> 10 Librerías de React interesantes
+-> https://blog.logrocket.com/top-10-react-component-libraries-for-2020/
+
+-> Tutorial oficial de React
+-> https://es.react.dev/learn/tutorial-tic-tac-toe
 
 
+-- Youtube playlist de React + TypeScript - Fernando Herrera Playlist
+-> En mi canal de YouTube estoy subiendo una playlist para aprender a trabajar con React y TypeScript en conjunto:
+-> https://www.youtube.com/watch?v=dNxaP_BTtwQ&list=PLCKuOXG0bPi26-eawizqyLOgM7j66H_4M
 
-
+-> https://fernando-herrera.com/#/search/react
 
 
 
